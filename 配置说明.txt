@@ -1,0 +1,6 @@
+1.构建路径JDK1.6
+2.下载安装Maven，MyEclipse中会自动下载MAVEN缺失的JAR包
+3.下载安装git
+4.构建路径org.eclipse.jdt.core-3.8.0.v_C18.jar
+5.构建路径Junit4
+6.修改GraphViz.java中的DOT，TEMP_DIR

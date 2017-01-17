@@ -1,0 +1,1085 @@
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:44:23 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:44:23 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:44:26 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:44:26 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:44:26 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:44:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:44:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:44:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:44:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:44:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:44:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:44:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:44:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:44:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:45:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:45:03 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:45:03 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:45:03 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:45:03 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669379_, javafile0_.fileName as fileName669379_, javafile0_.pkg as pkg669379_, javafile0_.commitID as commitID669379_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:45:20 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+ASTClazzVisitorrx.operators
+2016-12-29 3:45:23 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:45:23 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:45:23 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:45:23 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:45:29 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:45:32 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:45:34 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:45:39 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:45:44 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:45:44 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:45:50 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:45:51 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:45:54 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:45:57 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:45:57 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:45:57 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:45:57 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:45:57 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:45:57 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:46:00 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:46:00 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:46:00 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:46:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:46:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:46:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:46:31 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:46:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:46:37 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:46:37 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:46:37 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:46:37 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:46:37 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669389_, javafile0_.fileName as fileName669389_, javafile0_.pkg as pkg669389_, javafile0_.commitID as commitID669389_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:46:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+SCMIterator package:rx.util.functions
+ASTClazzVisitorrx.util.functions
+2016-12-29 3:46:54 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:46:54 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:46:54 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:46:54 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:47:00 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:47:03 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:47:06 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:47:09 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:47:14 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:47:14 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:47:20 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:47:23 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:47:26 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:47:28 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:47:28 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:47:28 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:47:28 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:47:28 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:47:28 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:47:31 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:47:31 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:47:31 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:48:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:48:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:48:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:48:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:48:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:48:08 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:48:08 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:48:08 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669399_, javafile0_.fileName as fileName669399_, javafile0_.pkg as pkg669399_, javafile0_.commitID as commitID669399_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+2016-12-29 3:48:20 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+SCMIterator package:rx.observables
+ASTClazzVisitorrx.observables
+2016-12-29 3:48:22 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:48:22 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:48:22 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:48:22 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:48:28 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:48:31 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:48:35 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:48:36 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:48:42 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:48:46 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:48:48 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:48:51 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:48:56 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:48:59 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:48:59 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:48:59 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:48:59 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:48:59 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:48:59 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:49:02 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:49:02 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:49:02 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:49:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:49:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:49:30 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:49:30 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:49:33 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:49:36 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:49:39 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:49:39 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:49:39 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669409_, javafile0_.fileName as fileName669409_, javafile0_.pkg as pkg669409_, javafile0_.commitID as commitID669409_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:49:53 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+2016-12-29 3:49:56 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:49:56 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:49:56 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:49:56 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:50:02 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:50:05 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:50:10 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:50:13 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:50:16 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:50:19 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:50:25 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:50:27 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:50:35 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:50:35 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:50:35 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:50:35 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:50:35 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:50:35 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:50:35 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:50:36 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:50:36 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:50:36 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:51:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:51:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:51:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:51:07 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:51:10 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:51:13 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:51:16 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:51:16 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:51:16 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:51:16 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:51:16 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669419_, javafile0_.fileName as fileName669419_, javafile0_.pkg as pkg669419_, javafile0_.commitID as commitID669419_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:51:36 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+SCMIterator package:rx.exceptions
+ASTClazzVisitorrx.exceptions
+2016-12-29 3:51:39 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:51:39 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:51:39 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:51:39 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:51:45 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:51:47 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:51:55 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:51:56 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:51:59 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:52:02 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:52:07 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:52:10 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:52:16 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:52:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:52:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:52:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:52:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:52:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:52:19 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:52:23 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:52:23 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:52:23 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:52:53 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:52:53 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:52:53 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:52:53 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:52:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:52:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:52:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:52:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:52:58 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:53:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669429_, javafile0_.fileName as fileName669429_, javafile0_.pkg as pkg669429_, javafile0_.commitID as commitID669429_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:54:04 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+ASTClazzVisitorrx.exceptions
+2016-12-29 3:54:07 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:54:07 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:54:07 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:54:07 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:54:13 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:54:17 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:54:23 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:54:24 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:54:27 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:54:30 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:54:35 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:54:38 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:54:47 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:54:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:54:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:54:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:54:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:54:51 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:54:51 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:54:52 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:54:52 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:54:52 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 3:55:32 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 3:55:32 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 3:55:32 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 3:55:32 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:55:32 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:55:35 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:55:35 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:55:35 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:55:35 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 3:55:35 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 3:55:38 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 3:55:41 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669439_, javafile0_.fileName as fileName669439_, javafile0_.pkg as pkg669439_, javafile0_.commitID as commitID669439_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 3:58:37 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+SCMIterator package:rx.swing.sources
+ASTClazzVisitorrx.swing.sources
+2016-12-29 3:58:42 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 3:58:42 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 3:58:42 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 3:58:42 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:58:48 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 3:58:51 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:58:56 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 3:58:59 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:59:05 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 3:59:08 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:59:13 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 3:59:16 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 3:59:23 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 3:59:25 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 3:59:25 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 3:59:25 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 3:59:25 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 3:59:25 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 03:59:25 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 3:59:27 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 3:59:27 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 3:59:27 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 4:00:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 4:00:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 4:00:01 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 4:00:01 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:00:01 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:00:04 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:00:04 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:00:04 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:00:04 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:00:07 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:00:07 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:00:07 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:00:07 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:00:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 4:00:10 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669449_, javafile0_.fileName as fileName669449_, javafile0_.pkg as pkg669449_, javafile0_.commitID as commitID669449_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 4:05:31 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+ASTClazzVisitorrx.swing.sources
+2016-12-29 4:05:37 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:05:37 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:05:37 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 4:05:37 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:05:47 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 4:05:47 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:05:51 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 4:05:54 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:06:00 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 4:06:02 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:06:08 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 4:06:11 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:06:16 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 4:06:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 4:06:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 4:06:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 4:06:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 4:06:19 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 04:06:19 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 4:06:22 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 4:06:22 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 4:06:22 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 4:06:56 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 4:06:56 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 4:06:56 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 4:06:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:06:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:06:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:06:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:07:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:07:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:07:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:07:02 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 4:07:05 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 4:07:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 4:07:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 4:07:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 4:07:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 4:07:07 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Hibernate: select javafile0_.fileID as fileID669459_, javafile0_.fileName as fileName669459_, javafile0_.pkg as pkg669459_, javafile0_.commitID as commitID669459_ from javafile javafile0_ where javafile0_.commitID=? and javafile0_.fileName=?
+Hibernate: insert into javafile (fileName, pkg, commitID) values (?, ?, ?)
+2016-12-29 4:14:12 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl stop
+INFO: HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/mysql]
+ASTClazzVisitorrx.swing.sources
+2016-12-29 4:14:17 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:14:17 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:14:17 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+2016-12-29 4:14:17 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:14:27 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Package.hbm.xml
+2016-12-29 4:14:29 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:14:40 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/JavaFile.hbm.xml
+2016-12-29 4:14:43 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:14:49 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/ChangeEdge.hbm.xml
+2016-12-29 4:14:51 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:15:00 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/A2A.hbm.xml
+2016-12-29 4:15:03 org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2016-12-29 4:15:08 org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+2016-12-29 4:15:14 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+2016-12-29 4:15:14 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 200
+2016-12-29 4:15:14 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+2016-12-29 4:15:14 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/mysql]
+2016-12-29 4:15:14 org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+Thu Dec 29 04:15:14 CST 2016 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2016-12-29 4:15:17 org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-29 4:15:17 org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+2016-12-29 4:15:17 org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000228: Running hbm2ddl schema update
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000102: Fetching database metadata
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000396: Updating schema
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:15:54 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:15:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:15:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:15:57 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: a2a
+2016-12-29 4:15:59 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: changeedge
+2016-12-29 4:16:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: clazz
+2016-12-29 4:16:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: javafile
+2016-12-29 4:16:00 org.hibernate.tool.hbm2ddl.DatabaseMetadata getTableMetadata
+INFO: HHH000262: Table not found: package
+2016-12-29 4:16:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table a2a (id integer not null auto_increment, commitID varchar(50), nextCommitID varchar(50), value double precision, primary key (id))
+2016-12-29 4:16:00 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'a2a' already exists
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table changeedge (changeEdgeID integer not null auto_increment, commitID varchar(50), addEdge integer, remEdge integer, addNEdge integer, primary key (changeEdgeID))
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'changeedge' already exists
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table clazz (id integer not null auto_increment, name varchar(200), pkg varchar(200), fileName varchar(200), loc integer, commitID varchar(50), primary key (id))
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'clazz' already exists
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table javafile (fileID integer not null auto_increment, fileName varchar(200), pkg varchar(50), commitID varchar(50), primary key (fileID))
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'javafile' already exists
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: HHH000388: Unsuccessful: create table package (pkgId integer not null auto_increment, path varchar(200), size integer, commitID varchar(50), primary key (pkgId))
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+ERROR: Table 'package' already exists
+2016-12-29 4:16:02 org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+INFO: HHH000232: Schema update complete
+Exception in thread "pool-63-thread-2" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.util
+ASTClazzVisitorrx.internal.util
+2016-12-29 4:17:59 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:17:59 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:18:07 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+Exception in thread "pool-63-thread-5" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.joins
+2016-12-29 4:18:30 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:18:30 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:18:38 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+Exception in thread "pool-63-thread-6" SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+java.lang.OutOfMemoryError: Java heap space
+2016-12-29 4:19:04 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:19:04 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:19:15 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+Exception in thread "pool-63-thread-7" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+2016-12-29 4:20:12 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:20:12 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+2016-12-29 4:20:29 org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: fjs/jde/model/Clazz.hbm.xml
+Exception in thread "pool-63-thread-8" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+2016-12-29 4:21:06 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:21:06 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-9" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:21:41 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:21:41 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-10" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.joins
+ASTClazzVisitorrx.joins
+2016-12-29 4:22:09 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:22:09 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-11" java.lang.OutOfMemoryError: Java heap spaceSCMIterator package:rx.internal.operators
+
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:22:27 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:22:27 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-12" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.subscriptions
+ASTClazzVisitorrx.subscriptions
+2016-12-29 4:22:47 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:22:47 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-13" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:23:07 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:23:07 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-14" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.subjects
+ASTClazzVisitorrx.subjects
+2016-12-29 4:23:29 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:23:29 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-15" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+2016-12-29 4:23:55 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:23:55 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-16" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.apache.http
+ASTClazzVisitorrx.apache.http
+2016-12-29 4:24:14 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:24:14 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-17" SCMIterator package:rx.internal.operators
+java.lang.OutOfMemoryError: Java heap space
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:24:49 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:24:49 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-18" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:25:12 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:25:12 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-19" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+Exception in thread "pool-63-thread-20" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.operators
+ASTClazzVisitorrx.internal.operators
+2016-12-29 4:25:55 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:25:55 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-21" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.functions
+ASTClazzVisitorrx.functions
+2016-12-29 4:26:31 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:26:31 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-22" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.joins
+ASTClazzVisitorrx.joins
+2016-12-29 4:27:17 org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+2016-12-29 4:27:18 org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+Exception in thread "pool-63-thread-23" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.joins
+ASTClazzVisitorrx.joins
+Exception in thread "pool-63-thread-24" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.javafx.sources
+ASTClazzVisitorrx.javafx.sources
+Exception in thread "pool-63-thread-25" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.exceptions
+ASTClazzVisitorrx.exceptions
+Exception in thread "pool-63-thread-26" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+Exception in thread "pool-63-thread-27" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.operators
+ASTClazzVisitorrx.operators
+Exception in thread "pool-63-thread-28" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.internal.util.unsafe
+ASTClazzVisitorrx.internal.util.unsafe
+Exception in thread "pool-63-thread-29" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.lang.groovy
+ASTClazzVisitorrx.lang.groovy
+Exception in thread "pool-63-thread-30" java.lang.OutOfMemoryError: Java heap space
+SCMIterator package:rx.joins
