@@ -87,7 +87,6 @@ public class GitController {
 	 * @return list of releases commitids
 	 */
 	public List<ReleaseCommit> getReleaseCommits(){
-		//List<ReleaseCommit> commits = new ArrayList<ReleaseCommit>();
 		BufferedReader br;
 		try {
 			br = new BufferedReader(
@@ -108,15 +107,16 @@ public class GitController {
 				
 			}
 			Collections.reverse(commits);//反转指定列表中元素的顺序。
-			for(int i=0;i<10;i++){
+			/*for(int i=0;i<46;i++){
 				
 				runCommits.add(commits.get(i));
-			}
+			}*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return runCommits;
+		return commits;
+		//return runCommits;
 	}
 	
 	/**

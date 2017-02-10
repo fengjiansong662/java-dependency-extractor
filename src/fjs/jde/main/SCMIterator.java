@@ -83,7 +83,6 @@ public class SCMIterator {
 		//fGit.getCommitDiff(commitID);
 		
 		fProject = initJavaProject();
-
 		CallClazzGraph ccg = createCallGraph(commitID,fCommits.get(fCurrentCommit).getReleaseName());
 		int beforeId = 0;
 		if(fCurrentCommit!=0){
@@ -172,12 +171,128 @@ public class SCMIterator {
 		
 		List<String> files = new ArrayList<String>();
 		Map<String,String> fileSourcePath=new HashMap<String, String>();
+		
 		for (File file : fProject.javaFiles) {
+			if(file.getAbsolutePath()!=null && file.getAbsolutePath().contains(".java")){
 			files.add(file.getAbsolutePath());
 			fileSourcePath.put(file.getAbsolutePath(), file.getParentFile().getAbsolutePath());
+			}
+		}
+		int listsize = (null == files) ? 0 : files.size();// List总记录条数，做非空判断避免程序出现异常
+		int perpagesize = 800;// 每个子List存放的记录条数
+		int sumpagenumber = listsize / perpagesize;// 总共需要多少个子List，整数相除会直接舍去小数部分
+		int lastListsize = listsize % perpagesize;// 最后一个List的size
+		if (lastListsize != 0) {// 如果最后一个List的大小不为0，则所需的List个数需要加1
+			sumpagenumber++;
+		}
+		for (int i = 0; i < sumpagenumber; i++) {
+			int starnum = i * perpagesize;// 每个子List起始的位置
+			if (starnum + perpagesize < listsize) {
+				System.out.println((starnum + 1) + "-"
+						+ (starnum + perpagesize));// 每个List包含的记录范围
+				System.out.println(files
+						.subList(starnum, starnum + perpagesize));// 子List
+				final Map<String, CompilationUnit> cUnits = parser
+						.parseFiles(files.subList(starnum, starnum
+								+ perpagesize));
+
+				ExecutorService executor = Executors.newFixedThreadPool(Runtime
+						.getRuntime().availableProcessors());
+
+				// visit all compilation units
+				final BlockingBindingResolverClazz bbrc = new BlockingBindingResolverClazz();
+				final ClassBindingResolver cbr = new ClassBindingResolver();
+				for (final String fullyQuallifiedFilename : cUnits.keySet()) {
+					final JavaFile fullyQuallifiedFile = new JavaFile();
+					fullyQuallifiedFile.setFileName(fullyQuallifiedFilename);
+
+					fullyQuallifiedFile.setSourcePath(fileSourcePath.get(
+							fullyQuallifiedFilename).substring(
+							GitController.fRepository.length()));
+					Runnable r = new Runnable() {
+						public void run() {
+							CompilationUnit unit = cUnits
+									.get(fullyQuallifiedFilename);
+							fullyQuallifiedFile
+									.setFileName(fullyQuallifiedFilename);
+							// System.out.println("SCMIterator package:"+unit.getPackage().getName().getFullyQualifiedName());
+							fullyQuallifiedFile.setLength(unit.getLength());
+							fullyQuallifiedFile.setPkg(unit.getPackage()
+									.getName().getFullyQualifiedName());
+							ASTClazzVisitor visitor = new ASTClazzVisitor(
+									fullyQuallifiedFile, unit, cg, cbr, bbrc,
+									commitID, releaseCommit);
+							// System.out.println(fullyQuallifiedFilename);
+							// //打印所有的java文件
+							unit.accept(visitor);
+						}
+					};
+					executor.execute(r);
+				}
+
+				executor.shutdown();
+
+				while (!executor.isTerminated()) {
+					try {
+						this.wait(5);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			} else {
+				System.out.println((starnum + 1) + "-" + (listsize));// 每个List包含的记录范围
+				System.out.println(files.subList(starnum, listsize));// 子List
+				final Map<String, CompilationUnit> cUnits = parser
+						.parseFiles(files.subList(starnum, listsize));
+
+				ExecutorService executor = Executors.newFixedThreadPool(Runtime
+						.getRuntime().availableProcessors());
+
+				// visit all compilation units
+				final BlockingBindingResolverClazz bbrc = new BlockingBindingResolverClazz();
+				final ClassBindingResolver cbr = new ClassBindingResolver();
+				for (final String fullyQuallifiedFilename : cUnits.keySet()) {
+					final JavaFile fullyQuallifiedFile = new JavaFile();
+					fullyQuallifiedFile.setFileName(fullyQuallifiedFilename);
+
+					fullyQuallifiedFile.setSourcePath(fileSourcePath.get(
+							fullyQuallifiedFilename).substring(
+							GitController.fRepository.length()));
+					Runnable r = new Runnable() {
+						public void run() {
+							CompilationUnit unit = cUnits
+									.get(fullyQuallifiedFilename);
+							fullyQuallifiedFile
+									.setFileName(fullyQuallifiedFilename);
+							// System.out.println("SCMIterator package:"+unit.getPackage().getName().getFullyQualifiedName());
+							fullyQuallifiedFile.setLength(unit.getLength());
+							fullyQuallifiedFile.setPkg(unit.getPackage()
+									.getName().getFullyQualifiedName());
+							ASTClazzVisitor visitor = new ASTClazzVisitor(
+									fullyQuallifiedFile, unit, cg, cbr, bbrc,
+									commitID, releaseCommit);
+							// System.out.println(fullyQuallifiedFilename);
+							// //打印所有的java文件
+							unit.accept(visitor);
+						}
+					};
+					executor.execute(r);
+				}
+
+				executor.shutdown();
+
+				while (!executor.isTerminated()) {
+					try {
+						this.wait(5);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		}
 		
-		final Map<String, CompilationUnit> cUnits = parser.parseFiles(files);
+		/*final Map<String, CompilationUnit> cUnits = parser.parseFiles(files);
+		System.out.println(cUnits.size());
 		
 		ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 		
@@ -212,7 +327,7 @@ public class SCMIterator {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		List<Package> pkgs=pkgRelation(cg,commitID);
 		SQLMethod.insertP(pkgs);//与A2A的计算有关，写p2p时注释掉，以后还要放开
@@ -220,10 +335,10 @@ public class SCMIterator {
 		for(int i=0;i<pkgs.size();i++){
 			for (Map.Entry<String, Integer> entry  : pkgs.get(i).dependencyEdge.entrySet()) {
 		        
-		        insertPackageEdge(commitID, releaseCommit, pkgs.get(i).getPath(), entry.getKey(), "dependence", entry.getValue());
+		        insertPackageEdge(commitID, releaseCommit, pkgs.get(i).getAllPath(), entry.getKey(), "dependence", entry.getValue());
 		       }
 			for (Map.Entry<String, Integer> entry  : pkgs.get(i).inheritanceEdge.entrySet()) {
-		        insertPackageEdge(commitID, releaseCommit, pkgs.get(i).getPath(), entry.getKey(), "inheritance", entry.getValue());
+		        insertPackageEdge(commitID, releaseCommit, pkgs.get(i).getAllPath(), entry.getKey(), "inheritance", entry.getValue());
 		       }
 		}
 		
@@ -524,7 +639,7 @@ public class SCMIterator {
 			haveDependencyClass = new HashMap();
 			Clazz c = ccg.getClasses().get(i);
 			
-			String trueName=c.getName();
+			String trueName=c.getTempName();
 			String lj[]=c.getPkg().split("\\.");
 			String name=null;
 			for(int q=0;q<lj.length;q++){
@@ -534,14 +649,14 @@ public class SCMIterator {
 					name+=lj[q];
 				}
 			}
-			String classname=c.getPkg().concat(".").concat(c.getName());
-			c.setName(name.concat(c.getName()));
+			String classname=c.getPkg().concat(".").concat(c.getTempName());
+			c.setTempName(name.concat(c.getName()));
 			if (!(c.getSuperClassName().size() == 0
 					&& c.getIncidenceRelationship().getIncidenceClassName()
 							.size() == 0 && c.getDependencyRelationship()
 					.getDepandMultiplicity().size() == 0)) {
 				
-					gv.addln(c.getName() + "[label = \"" + classname + "\"];");
+					gv.addln(c.getTempName() + "[label = \"" + classname + "\"];");
 				List<String> superClazzs = c.getSuperClassName();
 				List<String> incidenceClassNames = c.getIncidenceRelationship()
 						.getIncidenceClassName();
@@ -596,7 +711,7 @@ public class SCMIterator {
 					gv.addln("edge[arrowhead=\"onormal\",style=\"filled\"]");// 继承关系
 																				
 																			
-					gv.addln(c.getName() + "->" + superClazz2 + ";");
+					gv.addln(c.getTempName() + "->" + superClazz2 + ";");
 
 				
 				}
@@ -632,7 +747,7 @@ public class SCMIterator {
 							+ haveIncidenceClass.get(incidenceClass.get(j))
 							+ "\"]");// 关联关系 ,taillabel =
 										// \""+havedependencyClass.get(dependencyClass.get(j))+"\"
-					gv.addln(c.getName() + "->" + incidenceClassName
+					gv.addln(c.getTempName() + "->" + incidenceClassName
 							+ "[color=red]" + ";");
 					
 				}
@@ -671,7 +786,7 @@ public class SCMIterator {
 							+ haveDependencyClass.get(dependencyClass.get(j))
 							+ "\"]");// 依赖关系 ,taillabel =
 										// \""+havedependencyClass.get(dependencyClass.get(j))+"\"
-					gv.addln(c.getName() + "->" +dependencyClassName
+					gv.addln(c.getTempName() + "->" +dependencyClassName
 							+ "[color=red]" + ";");
 				
 				}
@@ -820,8 +935,9 @@ public class SCMIterator {
 		gv.addln(gv.start_graph());
 		gv.addln("encoding=\"UTF-8\"");
 		gv.addln("node[shape=record]");
-		ArrayList<String> superPkgs = new ArrayList<String>();
-		ArrayList<String> dependencyPkgs = new ArrayList<String>();
+		Set<String> superPkgs = new HashSet<String>();
+		Set<String> dependencyPkgs = new HashSet<String>();
+		Set<String> allPkgs=new HashSet<String>();
 		Map havePkgs = new HashMap();
 		int count = 0;
 		for (int i = 0; i < pkgs.size(); i++) {
@@ -845,85 +961,128 @@ public class SCMIterator {
 				if(p.getPathName()!=null){
 					if(!havePkgs.containsKey(p.getPathName())){
 						count++;
-						havePkgs.put(p.getPath(), count);
+						havePkgs.put(p.getPathName(), count);
 					}
 				}else if (!havePkgs.containsKey(p.getPath())) {
 					count++;
 					havePkgs.put(p.getPath(), count);
 				}
 				if( p.getPathName()!=null){
-				gv.addln("subgraph clusterAnimalImpl"
+					if(!allPkgs.contains(p)){
+						gv.addln("subgraph clusterAnimalImpl"
 						+ havePkgs.get(p.getPathName()) + " {label=\"Package "
 						+ p.getPathName() + "\"" + allPathName
 						+ " [label = \"" + p.getSimpleName()
-						+ "\"]{ rank=same; " +p.getSimpleName() + " }}");
+						+ "\"]{ rank=same; " +allPathName + " }}");
+						allPkgs.add(p.getAllPath());
+					}
 				
 				}
 				//super 继承关系
 				for (int j = 0; j < p.getInheritancePkgs().size(); j++) {
 					String ip = p.getInheritancePkgs().get(j);
-					if(ip.contains(".")){
-					String[] d = ip.split("\\.");
-					if (!superPkgs.contains(d[d.length - 1])) {
-						int ln = d[d.length - 1].length();
-						if (d[d.length - 1].equalsIgnoreCase("graph")) {
-							d[d.length - 1] = "graph1";
-						}
-						if (!havePkgs.containsKey(ip.substring(0, ip.length()
-								- ln - 1))) {
-							count++;
-							havePkgs.put(ip.substring(0, ip.length() - ln - 1),
-									count);
-						}
-						gv.addln("subgraph clusterAnimalImpl"
-								+ havePkgs.get(ip.substring(0, ip.length() - ln
-										- 1)) + " {label=\"Package "
-								+ ip.substring(0, ip.length() - ln - 1) + "\""
-								+ d[d.length - 1] + " [label = \""
-								+ d[d.length - 1] + "\"]{ rank=same; "
-								+ d[d.length - 1] + " }}");
-						gv.addln("edge[arrowhead=\"onormal\", style=\"filled\"]");// 继承关系
-						gv.addln(allPathName + "->" + d[d.length - 1]+ ";");
-						
+					if(ip.endsWith(".")){
+						String a=ip.substring(0, ip.length()-1);
+						ip=a;
 					}
-					}else{
+					if (ip.contains(".")) {
+						String[] d = ip.split("\\.");
+						if (!superPkgs.contains(ip)){
+							
+							int ln = d[d.length - 1].length();
+							if (d[d.length - 1].equalsIgnoreCase("graph")) {
+								d[d.length - 1] = "graph1";
+							}
+							String f = ip.substring(0, ip.length() - ln - 1);
+							String fp;
+							if (f.endsWith(".")) {
+								fp = f.substring(0, f.length() - 1);
+							} else {
+								fp = f;
+							}
+							System.out.println(fp);
+							if (!havePkgs.containsKey(fp)) {
+								count++;
+								havePkgs.put(fp, count);
+							}
+							if(!allPkgs.contains(ip)){
+							gv.addln("subgraph clusterAnimalImpl"
+									+ havePkgs.get(fp) + " {label=\"Package "
+									+ fp
+									+ "\"" + d[d.length - 1] + " [label = \""
+									+ d[d.length - 1] + "\"]{ rank=same; "
+									+ d[d.length - 1] + " }}");
+							gv.addln("edge[arrowhead=\"onormal\", style=\"filled\"]");// 继承关系
+							gv.addln(allPathName + "->" + d[d.length - 1] + ";");
+							System.out.println(d[d.length - 1]);
+							superPkgs.add(ip);
+							allPkgs.add(ip);
+							}else{
+								gv.addln("edge[arrowhead=\"onormal\", style=\"filled\"]");// 继承关系
+								gv.addln(allPathName + "->" + d[d.length - 1] + ";");
+								System.out.println(d[d.length - 1]);
+								superPkgs.add(ip);
+							}
+						}
+					} else {
 						if (ip.equalsIgnoreCase("graph")) {
-							ip= "graph1";
+							ip = "graph1";
 						}
 						gv.addln("edge[arrowhead=\"onormal\", style=\"filled\"]");// 继承关系
-						gv.addln(allPathName+ "->" + ip+ ";");
-						
+						gv.addln(allPathName + "->" + ip + ";");
+						System.out.println(ip);
+						if(!allPkgs.contains(ip)){
+							allPkgs.add(ip);
+						}
+
 					}
-					
+
 				}
 				//依赖关系
 				for (int j = 0; j < p.getDependencyPkgs().size(); j++) {
 					String dp = p.getDependencyPkgs().get(j);
+					if(dp.endsWith(".")){
+						String a=dp.substring(0, dp.length()-1);
+						dp=a;
+					}
 					if(dp.contains(".")){
 					String[] d = dp.split("\\.");
 		
-					if (!dependencyPkgs.contains(d[d.length - 1])) {
+					if (!dependencyPkgs.contains(dp)) {
 						int ln = d[d.length - 1].length();
 						if (d[d.length - 1].equalsIgnoreCase("graph")) {
 							d[d.length - 1]= "graph1";
 						}
-						if (!havePkgs.containsKey(dp.substring(0, dp.length()
-								- ln - 1))) {
-							count++;
-							havePkgs.put(dp.substring(0, dp.length() - ln - 1),
-									count);
+						String f=dp.substring(0, dp.length()- ln - 1);
+						String fp;
+						if(f.endsWith(".")){
+							fp=f.substring(0, f.length()-1);
+						}else{
+							fp=f;
 						}
 						
+						if (!havePkgs.containsKey(fp)) {
+							count++;
+							havePkgs.put(fp,count);
+						}
+						if(!allPkgs.contains(dp)){
 						gv.addln("subgraph clusterAnimalImpl"
-								+ havePkgs.get(dp.substring(0, dp.length() - ln
-										- 1)) + " {label=\"Package "
-								+ dp.substring(0, dp.length() - ln - 1) + "\""
+								+ havePkgs.get(fp) + " {label=\"Package "
+								+ fp + "\""
 								+ d[d.length - 1] + " [label = \""
 								+ d[d.length - 1]+ "\"]{ rank=same; "
 								+d[d.length - 1]+ " }}");
 						gv.addln("edge[arrowhead=\"open\",style=\"dashed\"]");// 依赖关系
 						gv.addln(allPathName+ "->" + d[d.length - 1]
 								+ ";");
+						dependencyPkgs.add(dp);
+						allPkgs.add(dp);
+						}else{
+							gv.addln("edge[arrowhead=\"open\",style=\"dashed\"]");// 依赖关系
+							gv.addln(allPathName+ "->" + d[d.length - 1]
+									+ ";");
+							dependencyPkgs.add(dp);
+						}
 						}
 					}else{
 						if (!dependencyPkgs.contains(dp)) {
@@ -964,16 +1123,19 @@ public class SCMIterator {
 					String []temp=a.split("\\.");
 					int l=temp.length;
 					if(temp.length>1){
-					dPkg=a.substring(0, a.length()-temp[l-1].length()-2);
+					dPkg=a.substring(0, a.length()-temp[l-1].length()-1);
 					}else{
 						dPkg=a;
 					}
 				}else{
 					if(s.length>1){
-					dPkg=dClass.substring(0, dClass.length()-s[len - 1].length()-1);
+					dPkg=dClass.substring(0, dClass.length()-s[len - 1].length());
 					}else{
 						dPkg=dClass;
 					}
+				}
+				if(dPkg.endsWith(".")){
+					dPkg.subSequence(0, dPkg.length()-1);
 				}
 				if(p.getDependencyPkgs().size()==0){
 					p.addDependencyPkg(dPkg);
@@ -1009,22 +1171,27 @@ public class SCMIterator {
 			String[] s = iClass.split("\\.");
 			int len=s.length;
 			String iPkg ;
+			System.out.println(iClass);
 			if(iClass.contains("<")&&iClass.contains(">")){
-				String a=iClass.substring(0, iClass.indexOf("<")-1);
+				String a=iClass.substring(0, iClass.indexOf("<"));
 				System.out.println(a);
 				String []temp=a.split("\\.");
 				int l=temp.length;
 				if(temp.length>1){
-					iPkg=a.substring(0, a.length()-temp[l-1].length()-2);
+					iPkg=a.substring(0, a.length()-temp[l-1].length()-1);
 				}else{
 					iPkg=a;
 				}
-			}{
+			}else{
 				if(s.length>1){
-					iPkg=iClass.substring(0, iClass.length()-s[len - 1].length()-1);
+					iPkg=iClass.substring(0, iClass.length()-s[len - 1].length());
 				}else{
 					iPkg=iClass;
 				}
+			}
+			System.out.println(iPkg);
+			if(iPkg.endsWith(".")){
+				iPkg.subSequence(0, iPkg.length()-1);
 			}
 			if (p.getInheritancePkgs().size() == 0) {
 				p.addInheritancePkg(iPkg);
@@ -1089,6 +1256,10 @@ public class SCMIterator {
 		packageEdge.setCommitID(commitID);
 		packageEdge.setReleaseName(releaseName);
 		packageEdge.setStartP(startP);
+		if(endp.endsWith(".")){
+			String temp=endp.substring(0, endp.length()-1);
+			endp=temp;
+		}
 		packageEdge.setEndP(endp);
 		packageEdge.setType(type);
 		packageEdge.setNum(num);

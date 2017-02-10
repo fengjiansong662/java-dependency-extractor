@@ -70,8 +70,14 @@ public class ChangeEdges {
 	public static void printChangeEdges(GitController gitController){
 		GitController fGit = gitController;
 		List<ReleaseCommit> commitIDS=fGit.getReleaseCommits();
-		for (int i = 0; i < commitIDS.size()-1; i++) {//commitIDS.size()
-			GetChangeEdges(commitIDS.get(i-1),commitIDS.get(i));
+		System.out.println(commitIDS.size());
+		for (int i = 0; i < commitIDS.size(); i++) {//commitIDS.size()
+			if(i==0){
+				GetChangeEdges(null,commitIDS.get(i));
+			}else{
+				GetChangeEdges(commitIDS.get(i-1),commitIDS.get(i));
+			}
+			
 		}
 	}
 }

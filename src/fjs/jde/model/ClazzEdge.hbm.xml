@@ -28,5 +28,8 @@
         <property name="num" type="java.lang.Integer">
             <column name="num"  />
         </property>
+         <property name="p2pValue" type="java.lang.Double">
+            <column name="p2pValue"  />
+        </property>
     </class>
 </hibernate-mapping>

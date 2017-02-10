@@ -1,0 +1,116 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  Internal Error (methodOop.cpp:1151), pid=9056, tid=1364
+#  Error: ShouldNotReachHere()
+#
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (11.3-b02 mixed mode windows-amd64)
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000003cd50800):  VMThread [stack: 0x000000003ceb0000,0x000000003cfb0000] [id=1364]
+
+Stack: [0x000000003ceb0000,0x000000003cfb0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+
+[error occurred during error reporting (printing native stack), id 0xc0000005]
+
+VM_Operation (0x000000000211f0c0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00000000003bec00
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000003ce06800 
+[error occurred during error reporting (printing all threads), id 0xc0000005]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000000000468900] UNKNOWN - owner thread: 0x000000003cd50800
+[0x0000000000468ea0] UNKNOWN - owner thread: 0x00000000003bec00
+
+Heap
+ PSYoungGen      total 13760K, used 3880K [0x000000002bb40000, 0x000000002cf40000, 0x000000003c5e0000)
+  eden space 9088K, 0% used [0x000000002bb40000,0x000000002bb40000,0x000000002c420000)
+  from space 4672K, 83% used [0x000000002c420000,0x000000002c7ea060,0x000000002c8b0000)
+  to   space 5056K, 0% used [0x000000002ca50000,0x000000002ca50000,0x000000002cf40000)
+ PSOldGen        total 91712K, used 87975K [0x000000000a5e0000, 0x000000000ff70000, 0x000000002bb40000)
+  object space 91712K, 95% used [0x000000000a5e0000,0x000000000fbc9f00,0x000000000ff70000)
+ PSPermGen       total 21248K, used 11171K [0x00000000051e0000, 0x00000000066a0000, 0x000000000a5e0000)
+  object space 21248K, 52% used [0x00000000051e0000,0x0000000005cc8da0,0x00000000066a0000)
+
+Dynamic libraries:
+0x0000000000400000 - 0x000000000042e000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\bin\javaw.exe
+0x00000000772c0000 - 0x0000000077469000 	C:\windows\SYSTEM32\ntdll.dll
+0x00000000770a0000 - 0x00000000771bf000 	C:\windows\system32\kernel32.dll
+0x000007fefd360000 - 0x000007fefd3cb000 	C:\windows\system32\KERNELBASE.dll
+0x000007feff4f0000 - 0x000007feff5cb000 	C:\windows\system32\ADVAPI32.dll
+0x000007fefd5e0000 - 0x000007fefd67f000 	C:\windows\system32\msvcrt.dll
+0x000007feff190000 - 0x000007feff1af000 	C:\windows\SYSTEM32\sechost.dll
+0x000007fefeb60000 - 0x000007fefec8d000 	C:\windows\system32\RPCRT4.dll
+0x00000000771c0000 - 0x00000000772ba000 	C:\windows\system32\USER32.dll
+0x000007fefe710000 - 0x000007fefe777000 	C:\windows\system32\GDI32.dll
+0x000007fefecf0000 - 0x000007fefecfe000 	C:\windows\system32\LPK.dll
+0x000007fefea90000 - 0x000007fefeb59000 	C:\windows\system32\USP10.dll
+0x000007feff4b0000 - 0x000007feff4de000 	C:\windows\system32\IMM32.DLL
+0x000007fefe980000 - 0x000007fefea89000 	C:\windows\system32\MSCTF.dll
+0x000007fefd1e0000 - 0x000007fefd20f000 	C:\Windows\system32\nvinitx.dll
+0x000000006d890000 - 0x000000006de48000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\server\jvm.dll
+0x000007fef9ea0000 - 0x000007fef9edb000 	C:\windows\system32\WINMM.dll
+0x000000006d3b0000 - 0x000000006d3ba000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\hpi.dll
+0x0000000077480000 - 0x0000000077487000 	C:\windows\system32\PSAPI.DLL
+0x000000006d4c0000 - 0x000000006d4f4000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\jdwp.dll
+0x000000006d6d0000 - 0x000000006d6d8000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\npt.dll
+0x000000006d800000 - 0x000000006d80e000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\verify.dll
+0x000000006d450000 - 0x000000006d477000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\java.dll
+0x000000006d850000 - 0x000000006d862000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\zip.dll
+0x000000006d310000 - 0x000000006d319000 	F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\dt_socket.dll
+0x000007fefd680000 - 0x000007fefd6cd000 	C:\windows\system32\WS2_32.dll
+0x000007feff4e0000 - 0x000007feff4e8000 	C:\windows\system32\NSI.dll
+0x000007fefbe80000 - 0x000007fefbe95000 	C:\windows\system32\NLAapi.dll
+0x000007fefa7f0000 - 0x000007fefa805000 	C:\windows\system32\napinsp.dll
+0x000007fefa670000 - 0x000007fefa689000 	C:\windows\system32\pnrpnsp.dll
+0x000007fefca50000 - 0x000007fefcaa5000 	C:\windows\System32\mswsock.dll
+0x000007fefc8d0000 - 0x000007fefc92b000 	C:\windows\system32\DNSAPI.dll
+0x000007fefa990000 - 0x000007fefa99b000 	C:\windows\System32\winrnr.dll
+0x000007fefa660000 - 0x000007fefa670000 	C:\windows\system32\wshbth.dll
+0x000007fefb340000 - 0x000007fefb367000 	C:\windows\system32\IPHLPAPI.DLL
+0x000007fefb320000 - 0x000007fefb32b000 	C:\windows\system32\WINNSI.DLL
+0x000007fefb1a0000 - 0x000007fefb1f3000 	C:\windows\System32\fwpuclnt.dll
+0x000007fefa650000 - 0x000007fefa658000 	C:\windows\system32\rasadhlp.dll
+0x000007fefc3f0000 - 0x000007fefc3f7000 	C:\windows\System32\wshtcpip.dll
+0x000007fefd0b0000 - 0x000007fefd107000 	C:\windows\system32\apphelp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:56878 -Xms32m -Xmx800m -Dfile.encoding=GBK 
+java_command: fjs.jde.main.Main F:\repo\hadoop\
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.7.0_79
+CLASSPATH=.;C:\Program Files\Java\jdk1.7.0_79\lib\dt.jar;C:\Program Files\Java\jdk1.7.0_79\lib\tools.jar;
+PATH=F:\java MyEclipse10.7\MyEclipse10.7\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin;C:\mysql-5.7.14-winx64\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Java\jdk1.7.0_79\bin;C:\Program Files\Java\jdk1.7.0_79\jre\bin;D:\java\apache-maven-3.2.2\bin;C:\Python27;D:\°²×°Èí¼þ\Git\cmd;.;;.;;.;
+USERNAME=dell-pc
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.1 Build 7601 Service Pack 1
+
+CPU:total 4 (8 cores per cpu, 2 threads per core) family 6 model 5 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, ht
+
+Memory: 4k page, physical 4099868k(1243688k free), swap 8197892k(2440856k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (11.3-b02) for windows-amd64 JRE (1.6.0_13-b03), built on Mar  9 2009 10:50:19 by "java_re" with MS VC++ 8.0
+
+time: Sun Feb 05 00:29:20 2017
+elapsed time: 844 seconds
+

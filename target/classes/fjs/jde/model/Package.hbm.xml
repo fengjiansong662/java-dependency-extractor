@@ -23,7 +23,7 @@
             <column name="commitID" length="50" />
         </property>
         <property name="allPath" type="java.lang.String">
-            <column name="allPath" length="50" />
+            <column name="allPath" length="200" />
         </property>
         <property name="p2pValue" type="java.lang.Double">
             <column name="p2pValue"  />

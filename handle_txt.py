@@ -5,6 +5,7 @@
 # @Last Modified by:   Guoxuenan
 # @Last Modified time: 2017-01-15 15:30:29
 # <a href="/chanjarster/weixin-java-tools/tree/v1.3.2" class="css-truncate">
+#第二个版本
 import sys
 import urllib
 import urllib2
@@ -42,6 +43,7 @@ def get_commit_ID(fileread,mark_of_ID):
 	return lists
 
 def get_commit_version(fileread,mark_of_version):
+	
 	lists=[]
 	sets=set()
 	file2=open(fileread,'r')
@@ -49,15 +51,16 @@ def get_commit_version(fileread,mark_of_version):
 		# print x
 		try:
 			if x.index(mark_of_version,0,len(x)):
+				# print mark_of_version
 				index=x.index(mark_of_version,0,len(x))
 				end=x.index('"',index+len(mark_of_version),len(x))
 				temp=x[index+len(mark_of_version):end]
-				# print temp
 				if temp not in sets:
 					sets.add(temp)
 					lists.append(temp)
 		except Exception, e:
 			info = sys.exc_info()
+			# print info
 			pass
 	# print len(lists),
 	file2.close()
@@ -152,7 +155,7 @@ if __name__ == '__main__':
 	# url="https://github.com/larryli/PuTTY/tags"
 	# url="https://github.com/Supervisor/supervisor/tags"
 	# url="https://github.com/yusuke/twitter4j/tags"
-	url="https://github.com/google/compile-testing/tags"
+	url="https://github.com/apache/tomcat/tags"
 
 	start= url.find("com/")
 	end=url.find("tags")
@@ -171,17 +174,16 @@ if __name__ == '__main__':
 
 	newurl= getnewurl("./temp.txt")
 	
-	update(newurl)
+	update(newurl) 
 
 	# -----------------------------------------------------
 
 	commit_id= get_commit_ID("./temp1.txt",mark_of_ID)
 	version  = get_commit_version("./temp1.txt",mark_of_version)
-
 	timelist = get_commit_time("./temp1.txt",mark_of_time)
 	# print len(commit_id),str(commit_id)
 	# print len(version),str(version)
-
+	# print len(timelist),str(timelist)
 	if len(commit_id)== len(version) and len(version)== len(timelist):
 		result_dict=collections.OrderedDict()
 		for x in xrange(0,len(version)):
@@ -190,7 +192,7 @@ if __name__ == '__main__':
 		# -----------------------------------------------------
 		file2=open("./result.txt",'a+')
 		for key,item in result_dict.items():
-			# file2.write(str(result_dict))
+			#file2.write(str(result_dict))
 			file2.write(str(key)+"\t"+str(item)+'\n')
 		print "Get "+str(len(result_dict))+" release ID ,the result in current dir ,filename:result.txt"
 		file2.close()

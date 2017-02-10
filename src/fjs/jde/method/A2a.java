@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,17 +36,18 @@ public class A2a {
 		double addC2=0,addP2=0,deleted=0,modified=0,add=0,mov=0;
 		double addE1=0,addE2=0;
 		double a2a;
+		if(commitID1!=null){
 		ChangeEdge changeEdge=SQLMethod.queryChangeEdge(commitID2.getReleaseName());
-		List<Package> p1=SQLMethod.queryPackage(commitID1.getCommitID());
+		List<Package> p1=SQLMethod.queryPackage(commitID1.getReleaseName());
 		addP1=p1.size();
-		List<Package> p2=SQLMethod.queryPackage(commitID2.getCommitID());
+		List<Package> p2=SQLMethod.queryPackage(commitID2.getReleaseName());
 		addP2=p2.size();
-		List<Clazz> c1=SQLMethod.queryClazz(commitID1.getCommitID());
+		List<Clazz> c1=SQLMethod.queryClazz(commitID1.getReleaseName());
 		Map<String, List<String>> beforeFiles = new HashMap<String, List<String>>();
 		addC1=c1.size();
-		List<Clazz> c2=SQLMethod.queryClazz(commitID2.getCommitID());
-		List<JavaFile> file1=SQLMethod.queryFiles(commitID1.getCommitID());
-		List<JavaFile> file2=SQLMethod.queryFiles(commitID2.getCommitID());
+		List<Clazz> c2=SQLMethod.queryClazz(commitID2.getReleaseName());
+		List<JavaFile> file1=SQLMethod.queryFiles(commitID1.getReleaseName());
+		List<JavaFile> file2=SQLMethod.queryFiles(commitID2.getReleaseName());
 		Map<String,String> fileToPackage=new HashMap<String, String>();
 		addC2=c2.size();
 		addE1=SQLMethod.queryClazzEdges(commitID1.getReleaseName());
@@ -102,48 +104,51 @@ public class A2a {
 			}
 		}
 		mto=remP+addP+deleted+add+modified+mov+changeEdge.getAddEdge()+changeEdge.getRemEdge();
+		if(aco1!=0){
 		aco1=aco1+aco2;
 		a2a=(1-mto/aco1)*100;
+		}else{
+			a2a=100;
+		}}else{
+			a2a=0;
+		}
 		return a2a;
 	}
 	public static void printA2a(GitController gitController){
 		GitController fGit = gitController;
-		List<ReleaseCommit> commitIDS=fGit.getReleaseCommits();
+		List<ReleaseCommit> commitIDS=fGit.commits;
 		Map<String, List<String>> affectedFiles = new HashMap<String, List<String>>();
 		List<String> addedFiles=new ArrayList<String>();
 		List<String> modifiedFiles=new ArrayList<String>();
 		List<String> deletedFiles=new ArrayList<String>();
-		//File file = new File("E:/A2a.txt");
-		//FileWriter fw = null;
-		//try {		
-	    //	fw = new FileWriter(file,true);
-			for (int i = 0; i < commitIDS.size()-1; i++) {//commitIDS.size()
+		
+		System.out.println(commitIDS.size());
+			for (int i = 0; i < commitIDS.size(); i++) {
 				
-				affectedFiles=fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID());
+				if(i==0){
+					SQLMethod.insertA2A(commitIDS.get(i).getReleaseName(), null,commitIDS.get(i).getCommitID(), getA2a(null, commitIDS.get(i), addedFiles, modifiedFiles, deletedFiles));
+				}else{
+				affectedFiles=fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID());
 				if(affectedFiles.get("A")!=null){
 					
-					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("A").size();j++){
-						addedFiles.add(fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("A").get(j));
+					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("A").size();j++){
+						addedFiles.add(fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("A").get(j));
 					}
 				}
 				if(affectedFiles.get("M")!=null){
-					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("M").size();j++){
-						modifiedFiles.add(fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("M").get(j));
+					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("M").size();j++){
+						modifiedFiles.add(fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("M").get(j));
 					}
 				}
 				if(affectedFiles.get("D")!=null){
-					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("D").size();j++){
-						deletedFiles.add(fGit.getAffectedFiles(commitIDS.get(i+1).getCommitID(),commitIDS.get(i).getCommitID()).get("D").get(j));
+					for(int j=0;j<fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("D").size();j++){
+						deletedFiles.add(fGit.getAffectedFiles(commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID()).get("D").get(j));
 					}
 				}
-				SQLMethod.insertA2A(commitIDS.get(i).getReleaseName(), commitIDS.get(i).getCommitID(),commitIDS.get(i+1).getCommitID(), getA2a(commitIDS.get(i), commitIDS.get(i+1), addedFiles, modifiedFiles, deletedFiles));
-				//getA2a(commitIDS.get(i), commitIDS.get(i+1), addedFiles, modifiedFiles, deletedFiles);
-				//fw.write("A2a(" +commitIDS.get(i)+","+commitIDS.get(i+1)+ ")=:"
-						//+getA2a(commitIDS.get(i), commitIDS.get(i+1), addedFiles, modifiedFiles, deletedFiles) + "\r\n");
-			//}
-	    	//fw.close();
-	    	//} catch (IOException e) {
-	    	//	e.printStackTrace();
+					
+					SQLMethod.insertA2A(commitIDS.get(i).getReleaseName(), commitIDS.get(i-1).getCommitID(),commitIDS.get(i).getCommitID(), getA2a(commitIDS.get(i-1), commitIDS.get(i), addedFiles, modifiedFiles, deletedFiles));
+				}
+		
 	    }
 		
 	}

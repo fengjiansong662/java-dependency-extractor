@@ -238,6 +238,7 @@ public class ASTClazzVisitor extends org.eclipse.jdt.core.dom.ASTVisitor {
 			
 			// Attributes			
 			clazz.setName(bbrc.getName(clazzBinding));
+			clazz.setTempName(bbrc.getName(clazzBinding));
 			clazz.setCommitID(commitID);
 			clazz.setReleaseName(releaseName);
 			clazz.setFileName(file.getFileName());

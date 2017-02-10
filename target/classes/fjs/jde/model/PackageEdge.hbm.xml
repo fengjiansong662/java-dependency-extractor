@@ -11,7 +11,7 @@
             <generator class="native" />
         </id>
          <property name="startP" type="java.lang.String">
-            <column name="startP" length="50"/>
+            <column name="startP" length="200"/>
         </property>
         <property name="endP" type="java.lang.String">
             <column name="endP" length="200"/>

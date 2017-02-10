@@ -27,7 +27,9 @@ import fjs.jde.model.Package;
 import fjs.jde.model.PackageEdge;
 
 public class SQLMethod{
-	 public SQLMethod() {}
+	
+	 public SQLMethod() {
+	 } 
 	 public static void insertClazz(Clazz clazz){
 		 Clazz c=new Clazz();
 		 c.setFileName(clazz.getFileName());
@@ -46,26 +48,6 @@ public class SQLMethod{
 	        session.close();
 	        sf.close();
 	 }
-	 
-	 //将类之间的边存入数据库中
-	/* public static void insertClazzEdge(ClazzEdge clazzEdge){
-		 ClazzEdge cEdge=new ClazzEdge();
-		 cEdge.setStartpoint(clazzEdge.getStartpoint());
-		 cEdge.setEndpoint(clazzEdge.getEndpoint());
-		 cEdge.setReleaseName(clazzEdge.getReleaseName());
-		 cEdge.setCommitID(clazzEdge.getCommitID());
-		 cEdge.setType(clazzEdge.getType());
-		 //cEdge.setNum(clazzEdge.getNum());
-		 Configuration cfg = new Configuration();
-	        SessionFactory sf = cfg.configure().buildSessionFactory();
-	        Session session = sf.openSession();
-	        session.beginTransaction();
-	        session.save(cEdge);
-	        session.getTransaction().commit();
-	        session.close();
-	        sf.close();
-	 }*/
-	 
 	
 	  //将类之间的边存入数据库中
 		 public static void insertClazzEdge(ClazzEdge clazzEdge){
@@ -187,6 +169,7 @@ public class SQLMethod{
 				 c.setFileName(clazzs.get(i).getFileName());
 				 c.setName(clazzs.get(i).getName());
 				 c.setPkg(clazzs.get(i).getPkg());
+				 c.setAllPath(clazzs.get(i).getAllPath());
 				 c.setLoc(clazzs.get(i).getLoc());
 				 c.setReleaseName(clazzs.get(i).getReleaseName());
 				 c.setCommitID(clazzs.get(i).getCommitID());
@@ -256,23 +239,23 @@ public class SQLMethod{
 		 Transaction tx = session.beginTransaction();  
 		 //tx.begin(); //开启事务
 		 for ( int i=0; i<packages.size(); i++ ) {
-		     Package p = new Package();  
-		     //p=packages.get(i);
+			 Package p = new Package();  
 		     p.setPath(packages.get(i).getPath());
 		     p.setReleaseName(packages.get(i).getReleaseName());
 		     p.setCommitID(packages.get(i).getCommitID());
 		     p.setAllPath(packages.get(i).getAllPath());
-		     String hql = "from Package as package where package.commitID=:n and package.releaseName=:y and package.path=:m and package.size=:x and package.allPath=:g";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+		     p.setSize(packages.get(i).getSize());
+		   /*  String hql = "from Package as package where package.commitID=:n and package.releaseName=:y and package.path=:m and package.size=:x and package.allPath=:g";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
 		     Query query = session.createQuery(hql);  
 		     query.setString("n",p.getCommitID()); 
 		     query.setString("y", p.getReleaseName());
 		     query.setString("m",p.getPath());//设置HQL语句中的:n对应的值  
-		     query.setLong("x",p.getClazzs().size());
-		     query.setString("g",p.getAllPath());   
+		     query.setLong("x",p.getSize());
+		     query.setString("g",p.getAllPath());*/   
 		     session.setCacheMode(CacheMode.IGNORE);  
-		     if(query.list().size()==0){
+		     //if(query.list().size()==0){
 		        	session.save(p);
-		     }
+		     //}
 		     if ( i % 50 == 0 ) {   
 		           //将本批插入的对象立即写入数据库并释放内存   
 		           session.flush();   
@@ -361,8 +344,10 @@ public class SQLMethod{
 		        return query.list();//多条记录  
 		            
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        }  
 		    }  
 		      
 		}  
@@ -392,8 +377,10 @@ public class SQLMethod{
 		       
 		            
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        } 
 		    }  
 		      
 		}  
@@ -430,8 +417,10 @@ public class SQLMethod{
 		       
 		            
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        }
 		    }  
 		      
 		}  
@@ -455,8 +444,10 @@ public class SQLMethod{
 		       // 但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        }  
 		    }  
 		      
 		}  
@@ -482,14 +473,15 @@ public class SQLMethod{
 		       // 但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
-		    }  
-		      
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        }
+		    }
 		}  
 	 
 	 //查询每个版本中每个包所包含的clazz
-	 public static List<Clazz> queryClazzOfPackage(String releaseName,String pkg){  
+	 public static List<Clazz> queryClazzOfPackage(String releaseName,String allPath){  
 		    Configuration cfg = new Configuration();  
 		    cfg.configure();  
 		    SessionFactory sf = null;  
@@ -497,10 +489,10 @@ public class SQLMethod{
 		    try{  
 		        sf = cfg.buildSessionFactory();  
 		        s = sf.openSession();  
-		        String hql = "from Clazz as clazz where clazz.releaseName=:n and clazz.pkg=:m";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+		        String hql = "from Clazz as clazz where clazz.releaseName=:n and clazz.allPath=:m";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
 		        Query query = s.createQuery(hql);  
 		        query.setString("n",releaseName); //设置HQL语句中的:n对应的值  
-		        query.setString("m",pkg);
+		        query.setString("m",allPath);
 		        return query.list();//多条记录  
 		          
 		         
@@ -508,39 +500,68 @@ public class SQLMethod{
 		       // 但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
-		    }  
-		      
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        }
+		    }
 		}  
 	 
 	 //将计算的P2P值放在数据库中
 	 public static void updatePackage(String releaseName,String packageName,double p2pValue){
-		 Configuration cfg = new Configuration();  
-		    cfg.configure();  
+		 Configuration cfg = new Configuration();   
 		    SessionFactory sf = null;  
 		    Session s = null;  
 		    try{  
-		        sf = cfg.buildSessionFactory();  
+		        sf = cfg.configure().buildSessionFactory();  
 		        s = sf.openSession();  
-		        
-		        String hql = "update Package as package set package.p2pValue=? where package.releaseName =? package.path=?";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+		        s.beginTransaction();
+		        String hql = "update Package as package set package.p2pValue=:a where package.releaseName =:b and package.allPath=:c";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
 		        Query query = s.createQuery(hql);  
-		        query.setDouble(0, p2pValue);
-		        query.setString(1, releaseName);
-		        query.setString(2, packageName);
+		        query.setDouble("a", p2pValue);
+		        query.setString("b", releaseName);
+		        query.setString("c", packageName);
 		        query.executeUpdate();
-		        
-		           
+		     
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		        if(s != null)  {
+		        	s.getTransaction().commit();
+		            s.close(); 
+		            sf.close();
+		        }
 		    }  
 		      
 	 } 
 	 
 	 //将计算的边的P2P值放在数据库中
 	 public static void updatePackageEdge(String releaseName,String startP,String endP,double p2pValue){
+		 Configuration cfg = new Configuration();    
+		    SessionFactory sf = null;  
+		    Session s = null;  
+		    try{  
+		        sf = cfg.configure().buildSessionFactory();  
+		        s = sf.openSession();  
+		        s.beginTransaction();
+		        String hql = "update PackageEdge as packageedge set packageedge.p2pValue=:a where packageedge.releaseName =:b and packageedge.startP=:c and packageedge.endP=:d";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+		        Query query = s.createQuery(hql);  
+		        query.setDouble("a", p2pValue);
+		        query.setString("b", releaseName);
+		        query.setString("c", startP);
+		        query.setString("d", endP);
+		        query.executeUpdate();
+		           
+		    }finally{  
+		        if(s != null){  
+		        	s.getTransaction().commit();
+		            s.close();
+		            sf.close();
+		            }  
+		    }  
+		      
+	 } 
+	 
+	 //将计算的类之间边的P2P值放在数据库中
+	 public static void updateClazzEdge(String releaseName,String startpoint,String endpoint,String type,double p2pValue){
 		 Configuration cfg = new Configuration();  
 		    cfg.configure();  
 		    SessionFactory sf = null;  
@@ -548,32 +569,63 @@ public class SQLMethod{
 		    try{  
 		        sf = cfg.buildSessionFactory();  
 		        s = sf.openSession();  
-		        
-		        String hql = "update PackageEdge as packageedge set packageedge.p2pValue=? where packageedge.releaseName =? packageedge.startP=? packageedge.endP=?";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+		        s.beginTransaction();
+		        String hql = "update ClazzEdge as clazzedge set clazzedge.p2pValue=:a where clazzedge.releaseName =:b and clazzedge.startpoint=:c and clazzedge.endpoint=:d and clazzedge.type=:e";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
 		        Query query = s.createQuery(hql);  
-		        query.setDouble(0, p2pValue);
-		        query.setString(1, releaseName);
-		        query.setString(2, startP);
-		        query.setString(3, endP);
+		        query.setDouble("a", p2pValue);
+		        query.setString("b", releaseName);
+		        query.setString("c", startpoint);
+		        query.setString("d", endpoint);
+		        query.setString("e", type);
 		        query.executeUpdate();
 		        
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		        if(s != null){  
+		        	s.getTransaction().commit();
+		            s.close();
+		            sf.close();
+		        }
 		    }  
 		      
 	 } 
 	 
-
+	//将计算类的P2P值放在数据库中
+		 public static void updateClazz(String releaseName,String name,String allPath,double p2pValue){
+			 Configuration cfg = new Configuration();  
+			    cfg.configure();  
+			    SessionFactory sf = null;  
+			    Session s = null;  
+			    try{  
+			        sf = cfg.buildSessionFactory();  
+			        s = sf.openSession();  
+			        s.beginTransaction();
+			        String hql = "update Clazz as clazz set clazz.p2pValue=:a where clazz.releaseName =:b and clazz.name=:c and clazz.allPath=:d";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
+			        Query query = s.createQuery(hql);  
+			        query.setDouble("a", p2pValue);
+			        query.setString("b", releaseName);
+			        query.setString("c", name);
+			        query.setString("d", allPath);
+			        query.executeUpdate();
+			        
+			           
+			    }finally{  
+			        if(s != null){  
+			        	s.getTransaction().commit();
+			            s.close();
+			            sf.close();
+			        }  
+			    }  
+			      
+		 } 
+		 
 	 
 	 public static List<PackageEdge> queryPackageEdge(String releaseName){  
 		    Configuration cfg = new Configuration();  
-		    cfg.configure();  
 		    SessionFactory sf = null;  
 		    Session s = null;  
 		    try{  
-		        sf = cfg.buildSessionFactory();  
+		        sf =  cfg.configure().buildSessionFactory();  
 		        s = sf.openSession();  
 		        
 		        String hql = "from PackageEdge as packageedge where packageedge.releaseName=:n";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
@@ -588,18 +640,19 @@ public class SQLMethod{
 		        //但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		        if(s != null){  
+		            s.close(); 
+		        	sf.close();
+		        }
 		    }  
 		      
 		}  
 	 public static List<ClazzEdge> queryClazzEdge(String releaseName){  
-		    Configuration cfg = new Configuration();  
-		    cfg.configure();  
+		    Configuration cfg = new Configuration();   
 		    SessionFactory sf = null;  
 		    Session s = null;  
 		    try{  
-		        sf = cfg.buildSessionFactory();  
+		        sf =cfg.configure().buildSessionFactory();  
 		        s = sf.openSession();  
 		        
 		        String hql = "from ClazzEdge as clazzedge where clazzedge.releaseName=:n";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
@@ -614,19 +667,20 @@ public class SQLMethod{
 		        //但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        } 
 		    }  
 		      
 		}  
 	 
 	 public static List<Package> queryPackage(String releaseName){  
-		    Configuration cfg = new Configuration();  
-		    cfg.configure();  
+		    Configuration cfg = new Configuration();   
 		    SessionFactory sf = null;  
 		    Session s = null;  
 		    try{  
-		        sf = cfg.buildSessionFactory();  
+		        sf = cfg.configure().buildSessionFactory();  
 		        s = sf.openSession();  
 		        
 		        String hql = "from Package as package where package.releaseName=:n";//from User查询的是对象User，而不是User表.这也是HQL与SQL的区别  
@@ -641,10 +695,13 @@ public class SQLMethod{
 		        //但如果使用此方法，若超出一条记录，将抛出异常。 
 		           
 		    }finally{  
-		        if(s != null)  
-		            s.close();  
+		    	 if(s != null){  
+			            s.close(); 
+			        	sf.close();
+			        } 
 		    }  
 		      
 		}  
+	 
 
 }

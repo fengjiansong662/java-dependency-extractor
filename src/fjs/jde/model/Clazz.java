@@ -20,6 +20,13 @@ public class Clazz
 	private String fileName;
 	private String sourcePath;//包以上的物理路径
 	private String allPath;//总物理路径
+	private double p2pValue;
+	public double getP2pValue() {
+		return p2pValue;
+	}
+	public void setP2pValue(double p2pValue) {
+		this.p2pValue = p2pValue;
+	}
 	public String getSourcePath() {
 		return sourcePath;
 	}
@@ -56,6 +63,13 @@ public class Clazz
 	private List<Method> methods;
 	private List<String> superClassName;
 	private String name;
+	private String tempName;
+	public String getTempName() {
+		return tempName;
+	}
+	public void setTempName(String tempName) {
+		this.tempName = tempName;
+	}
 	private Map<String,String> elements;
 	private int start = -1;
 	private int end = -1;

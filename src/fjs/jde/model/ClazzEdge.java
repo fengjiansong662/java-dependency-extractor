@@ -8,6 +8,13 @@ public class ClazzEdge {
 	private String commitID;
 	private String type;
 	private int num;
+	private double p2pValue;
+	public double getP2pValue() {
+		return p2pValue;
+	}
+	public void setP2pValue(double p2pValue) {
+		this.p2pValue = p2pValue;
+	}
 	public int getNum() {
 		return num;
 	}

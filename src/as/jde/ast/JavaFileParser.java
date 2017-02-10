@@ -86,10 +86,11 @@ public class JavaFileParser {
 				fEncodings.toArray(new String[fEncodings.size()]), true);
 		
 		final Map<String, CompilationUnit> cUnits = new HashMap<String, CompilationUnit>();
-		FileASTRequestor ar = new FileASTRequestor() {			
+		//final Map<String, CompilationUnit> cUnits2 = new HashMap<String, CompilationUnit>();
+		FileASTRequestor ar = new FileASTRequestor() {	
 			@Override
 			public void acceptAST(String source, CompilationUnit ast) {
-				cUnits.put(source, ast);
+					cUnits.put(source, ast);	
 			}
 		};
 		
